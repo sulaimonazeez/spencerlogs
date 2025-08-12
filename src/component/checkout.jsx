@@ -141,12 +141,12 @@ const makePurchase = () =>{
         </button>
       </div>
       <InsufficientFundsModal show={showAlert} setShow={setAlert}/>
-      {showAlert && (
+      {show && (
   <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
     <div className="bg-white rounded-xl shadow-lg p-6 w-[90%] max-w-md">
       <h3 className="text-xl font-semibold mb-4">{product.name}</h3>
       <div className="text-gray-700">
-        {credientials.credential.access_info || ''}
+        {credientials?.credential?.access_info || ''}
       </div>
       <button
         onClick={() => setLog(false)}
