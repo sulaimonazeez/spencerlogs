@@ -27,7 +27,7 @@ const makePurchase = async () => {
     if (res.data) {
       setCredientials(res.data); // wait until data is set before showing modal
       setLog(true);
-      setAlert(true);
+      alert(res.data.credential.access_info)
     }
   } catch (err) {
     console.error("Purchase error:", err);
