@@ -19,10 +19,9 @@ const ProductDetails = () => {
 const makePurchase = async () => {
   try {
     // 1️⃣ Check balance before making request
-    if (balance < product.price) {
+    if (Number(balance) < Number(product.price)) {
       setAlert(true);
-      return;
-    }
+}
 
     // 2️⃣ Make API request
     const res = await axiosInstance.post(`/api/product/${id}/`, { price: product.price });
