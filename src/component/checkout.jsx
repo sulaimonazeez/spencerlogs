@@ -16,25 +16,24 @@ const ProductDetails = () => {
   const [balance, setBalance] = useState(0);
   const [showAlert, setAlert] = useState(false);
   //const token = localStorage.getItem("access_token"); // or however you store your token
-const makePurchase = () =>{
-  if (balance >= product.price) {
-    axiosInstance.post(`/api/product/${id}/`)
-    .then(res =>{
-      if (res.data) {
-        setLog(true);
-        setAlert(true);
-      }
-      setCredientials(res.data);
-    
-    })
-    .catch(err =>{
-      console.log(err);
-      alert(err);
-    })
-  } else {
-    setAlert(true);
+const makePurchase = async () => {
+  try {
+    if (balance < product.price) {
+      setAlert(true);
+      return;
+    }
+
+    const res = await axiosInstance.post(`/api/product/${id}/`);
+    if (res.data) {
+      setCredientials(res.data); // wait until data is set before showing modal
+      setLog(true);
+      setAlert(true);
+    }
+  } catch (err) {
+    console.error("Purchase error:", err);
+    alert("Something went wrong while processing your purchase.");
   }
-}
+};
   useEffect(() => {
     axiosInstance.get(`/api/product/${id}/`)
     .then(res => {
