@@ -18,16 +18,30 @@ const ProductDetails = () => {
   //const token = localStorage.getItem("access_token"); // or however you store your token
 const makePurchase = async () => {
   try {
+    // 1️⃣ Check balance before making request
     if (balance < product.price) {
       setAlert(true);
       return;
     }
 
-    const res = await axiosInstance.post(`/api/product/${id}/`, {"price":product.price});
-    if (res.data) {
-      setCredientials(res.data); // wait until data is set before showing modal
+    // 2️⃣ Make API request
+    const res = await axiosInstance.post(`/api/product/${id}/`, { price: product.price });
+
+    // 3️⃣ Validate and use response
+    if (res?.data) {
+      // Set credentials first
+      setCredientials(res.data);
+
+      // Then show modal/log
       setLog(true);
-      alert(res.data.credential.access_info)
+
+      // Optional: show access info
+      if (res.data?.credential?.access_info) {
+        alert(res.data.credential.access_info);
+      }
+    } else {
+      console.warn("No data returned from purchase request.");
+      alert("Purchase completed, but no details were returned.");
     }
   } catch (err) {
     console.error("Purchase error:", err);
