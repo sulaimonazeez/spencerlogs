@@ -23,7 +23,7 @@ const makePurchase = async () => {
       return;
     }
 
-    const res = await axiosInstance.post(`/api/product/${id}/`);
+    const res = await axiosInstance.post(`/api/product/${id}/`, {"price":product.price});
     if (res.data) {
       setCredientials(res.data); // wait until data is set before showing modal
       setLog(true);
