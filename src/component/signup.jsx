@@ -21,7 +21,7 @@ const Signup = () => {
       alert("Passwords do not match.");
     } else {
       try {
-        const response = await axios.post("https://logserver.pythonanywhere.com/create/", {
+        const response = await axios.post("http://127.0.0.1:8000/create/", {
           email,
           username,
           password
