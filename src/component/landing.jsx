@@ -182,7 +182,7 @@ export default function LandingPage() {
   {/* Footer */}
   <footer className="bg-gray-900 text-white py-8 text-center">
     <div className="max-w-6xl mx-auto px-4">
-      <p>&copy; {new Date().getFullYear()} TextWave. All rights reserved.</p>
+      <p>&copy; {new Date().getFullYear()} ClashLogs. All rights reserved.</p>
     </div>
   </footer>
 </div>
