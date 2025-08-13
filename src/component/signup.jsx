@@ -10,16 +10,20 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [trigger, setTrigger] = useState(false);
   const [confirm, setConfirm] = useState("");
 
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
     if (!email || !username || !password || !confirm) {
+      setTrigger(false);
       alert("Please fill out all fields.");
     } else if (password !== confirm) {
+      setTrigger(false);
       alert("Passwords do not match.");
     } else {
+      setTrigger(true);
       try {
         const response = await axios.post("https://logserver.pythonanywhere.com/create/", {
           email,
@@ -33,6 +37,7 @@ const Signup = () => {
         }
       } catch (error) {
         console.error(error);
+        setTrigger(false);
         alert(error);
       }
     }
@@ -106,7 +111,7 @@ const Signup = () => {
           </div>
 
           {/* Submit Button */}
-          <button
+          <button disabled={trigger}
             onClick={handleSubmit}
             className="w-full bg-gradient-to-r from-indigo-700 to-purple-700 text-white font-semibold py-2 rounded-full hover:opacity-90 transition"
           >

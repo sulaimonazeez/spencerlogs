@@ -38,7 +38,7 @@ const Support = () => {
       <div className="grid gap-4 max-w-md mx-auto">
         {/* Telegram Customer Support */}
         <a
-          href="https://t.me/customer_support_channel"
+          href="https://t.me/clashlogs"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-between bg-white shadow p-4 rounded-xl hover:bg-gray-50"
@@ -55,7 +55,7 @@ const Support = () => {
 
         {/* Telegram Channel */}
         <a
-          href="https://t.me/announcement_channel"
+          href="https://t.me/clashlogs"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-between bg-white shadow p-4 rounded-xl hover:bg-gray-50"
@@ -72,7 +72,7 @@ const Support = () => {
 
         {/* WhatsApp Group */}
         <a
-          href="https://chat.whatsapp.com/+2348080891605"
+          href="https://chat.whatsapp.com/HElWZ4V5viq7OGiEWXWtRp"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-between bg-white shadow p-4 rounded-xl hover:bg-gray-50"

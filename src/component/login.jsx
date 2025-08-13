@@ -10,14 +10,16 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [trigger, setTrigger] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     if (!username || !password) {
       alert("Please enter username and password.");
+      setTrigger(false);
       return;
     }
-
+    setTrigger(true);
     try {
       const response = await axios.post("https://logserver.pythonanywhere.com/api/token/", {
         username,
@@ -33,6 +35,7 @@ const Login = () => {
       navigate("/home"); // redirect to dashboard or home
     } catch (error) {
       console.error(error);
+      setTrigger(false)
       alert("Invalid credentials. Try again.");
     }
   };
@@ -93,7 +96,7 @@ const Login = () => {
           </div>
 
           {/* Submit */}
-          <button
+          <button disabled={trigger}
             onClick={handleLogin}
             className="w-full bg-gradient-to-r from-indigo-700 to-purple-700 text-white font-semibold py-2 rounded-full hover:opacity-90 transition"
           >

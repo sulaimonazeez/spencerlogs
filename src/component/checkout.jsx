@@ -33,11 +33,6 @@ const makePurchase = async () => {
 
       // Then show modal/log
       setLog(true);
-
-      // Optional: show access info
-      if (res.data?.credential?.access_info) {
-        alert(res.data.credential.access_info);
-      }
     } else {
       console.warn("No data returned from purchase request.");
       alert("Purchase completed, but no details were returned.");
