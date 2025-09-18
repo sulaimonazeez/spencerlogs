@@ -9,9 +9,9 @@ import Profile from "./component/profile.jsx";
 import Support from "./component/support.jsx";
 import OrderHistory from "./component/history.jsx";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import FundWallet from "./component/fundwallet.jsx";
+//import FundWallet from "./component/fundwallet.jsx";
 import { logout } from './component/auth';
-
+import PaymentForm from "./component/payment.jsx";
 const isAuthenticated = () => {
   const accessToken = localStorage.getItem("access_token");
   const expiresIn = localStorage.getItem("expires_in");
@@ -46,7 +46,7 @@ function App() {
         <Route path="/support" element={<Support />} />
         <Route path="/history" element={<PrivateRoute element={<OrderHistory />} />} />
         <Route path="/home" element={<PrivateRoute element={<Dashboard />} />} />
-        <Route path="/fundwallet" element={<PrivateRoute element={<FundWallet />} />} />
+        <Route path="/fundwallet" element={<PrivateRoute element={<PaymentForm />} />} />
       </Routes>
     </Router>
   );

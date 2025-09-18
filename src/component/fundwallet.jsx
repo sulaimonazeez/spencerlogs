@@ -47,8 +47,9 @@ export default function FundWallet() {
         <div className="bg-green-50 p-4 rounded-lg shadow-inner">
           <p className="text-gray-700 font-medium">Send payment to:</p>
           <div className="mt-2">
+            <p className="text-gray-700 font-medium">Name: Paystar/Payvessel</p>
             <p className="text-xl font-bold tracking-widest text-gray-900">{virtualAccount.account_number}</p>
-            <p className="text-sm text-gray-600">{virtualAccount.bank_name}</p>
+            <p className="text-sm text-gray-600">Bank: {virtualAccount.bank_name}</p>
           </div>
         </div>
       ) : (
